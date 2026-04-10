@@ -1,1 +1,1 @@
-rootProject.name = "untitled"
+rootProject.name = "EDDS_DR3_AT"
