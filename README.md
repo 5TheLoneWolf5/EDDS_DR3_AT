@@ -7,4 +7,4 @@ Já runners auto-hospedados podem ser preparados e customizados pelo desenvolved
 
 Os runners hospedados pelo GitHub oferecem a facilidade e simplicidade de setup, com a desvantagem sendo a falta de flexibilidade e customização. 
 Isso é diferente da maneira self-hosted, que te dá a liberdade de configurar um ambiente próprio e personalizado (hardware e software) para a execução dos workflows.
-Porém, com a desvantagem da complexidade e tempo para criá-lo.
+Porém, com a desvantagem da complexidade e tempo gasto para criá-lo.
