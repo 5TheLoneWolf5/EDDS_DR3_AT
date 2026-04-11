@@ -1,0 +1,70 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: ufology
+data:
+  DB_NAME: "ufology"
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: db-secret
+  namespace: ufology
+type: Opaque
+stringData:
+  DB_PASSWORD: "devops2025!"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ufo-tracker-app
+  namespace: ufology
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ufo-tracker
+  template:
+    metadata:
+      labels:
+        app: ufo-tracker
+    spec:
+      containers:
+        - name: ufo-app
+          image: 5thelonewolf5/ufo-tracker:v1
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres-service:5432/ufology"
+
+            - name: POSTGRES_USERNAME
+              value: "postgres"
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: DB_PASSWORD
+
+            - name: SPRING_DATA_REDIS_HOST
+              value: "redis-service"
+            - name: SPRING_DATA_REDIS_PORT
+              value: "6379"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ufo-tracker-service
+  namespace: ufology
+spec:
+  selector:
+    app: ufo-tracker
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080

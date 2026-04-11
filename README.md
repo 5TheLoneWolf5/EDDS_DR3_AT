@@ -1,5 +1,37 @@
 # | Assessment | Pipelines de CI/CD e DevOps |
 
+### Orquestração de Containers com Kubernetes
+
+Os arquivos YAML estão organizados e presentes na pasta _kubernetes/_ dentro deste repositório.
+
+###### Parte 1:
+
+![](./assets/kubernetes-1.png)
+
+###### Parte 2:
+
+![](./assets/kubernetes-2.png)
+
+### Dockerfile da aplicação esquecida
+
+O arquivo Dockerfile está disponível em <i>devops2026-ufoTracker-main/Dockerfile</i> dentro deste repositório.
+
+- Build da imagem:
+
+![](./assets/build-docker.png)
+
+- Mudança de nome da imagem:
+
+![](./assets/rename-docker.png)
+
+- Push da imagem:
+
+![](./assets/push-docker.png)
+
+- Link para a imagem no repositório Docker:
+
+https://hub.docker.com/r/5thelonewolf5/ufo-tracker
+
 ### Workflows Básicos no GitHub Actions
 
 - hello.yml:
